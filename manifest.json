@@ -5,7 +5,7 @@
   "description": "Automatically track your most recently read Achewood comic",
   "version": "1.0",
   "background": {
-    "persistent": true,
+    "persistent": false,
     "scripts": ["bg.js"]
   },
   "permissions": [
