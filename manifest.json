@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Achewood Bookmark",
+  "description": "Automatically track your most recently read Achewood comic",
+  "version": "1.0",
+  "background": {
+    "persistent": true,
+    "scripts": ["bg.js"]
+  },
+  "permissions": [
+    "bookmarks",
+    "background",
+    "webNavigation"
+  ]
+}
