@@ -4,6 +4,10 @@
   "name": "Achewood Bookmark",
   "description": "Automatically track your most recently read Achewood comic",
   "version": "1.0",
+  "browser_action": {
+    "default_icon": "ray.png",
+    "default_title": "Achewood Bookmark"
+  },
   "background": {
     "persistent": false,
     "scripts": ["bg.js"]
@@ -11,6 +15,7 @@
   "permissions": [
     "webNavigation",
     "storage",
-    "background"
+    "background",
+    "tabs"
   ]
 }

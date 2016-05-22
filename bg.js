@@ -1,6 +1,9 @@
-console.log('Achewood bookmarker loaded.');
-
 var ab = new AchewoodBookmarker();
+
+console.log('Achewood bookmarker loaded.');
+ab.getURL(function(data) {
+  console.log('Achewood URL: ' + data.url);
+});
 
 chrome.webNavigation['onCompleted'].addListener(function(data) {
   if (ab.isAchewoodURL(data.url)) {
@@ -8,8 +11,8 @@ chrome.webNavigation['onCompleted'].addListener(function(data) {
   }
 });
 
-ab.getURL(function(data) {
-  console.log('Achewood URL: ' + data.url);
+chrome.browserAction.onClicked.addListener(function(data) {
+  ab.navigateToURL();
 });
 
 function AchewoodBookmarker() {
@@ -26,6 +29,12 @@ function AchewoodBookmarker() {
   this.setURL = function(url) {
     chrome.storage.local.set({'url': url}, function() {
       console.log(url + ' bookmarked.');
+    });
+  };
+
+  this.navigateToURL = function() {
+    this.getURL(function(data) {
+       chrome.tabs.create({'url': data.url});
     });
   };
 }
